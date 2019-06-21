@@ -3,6 +3,10 @@ const Schema=mongoose.Schema
 
 const UserSchema=new Schema({
 
+
+  
+   
+
     name:{
         type:String
     },
@@ -11,10 +15,12 @@ const UserSchema=new Schema({
     },
 
     state1:{
+
         type:String,
         required:true
 
     },
+
     gender:{
         type:String,
         required:true
@@ -31,6 +37,7 @@ const UserSchema=new Schema({
         type:String,
         required:true
     },
+
     password:{
         type:String,
         required:true

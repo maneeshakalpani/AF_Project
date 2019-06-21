@@ -2,8 +2,71 @@ import React,{Component} from 'react';
 import "./InstuctorLogin.css"
 import {Link} from "react-router-dom";
 
-
+import axios from 'axios';
 class InstuctorLogin extends Component {
+
+    constructor(props)
+    {
+
+        super(props);
+        this.updateinstructormail=this.updateinstructormail.bind(this);
+        this.updateinstructorpassword=this.updateinstructorpassword.bind(this);
+        this.onSubmit=this.onSubmit.bind(this);
+        this.state={
+
+            email:'',
+            password:''
+
+
+        }
+
+
+    }
+
+    updateinstructormail(e)
+    {
+        this.setState({ email:e.target.value});
+
+    }
+    updateinstructorpassword(e)
+    {
+        this.setState({ password:e.target.value});
+
+    }
+    onSubmit(e){
+        e.preventDefault()
+
+        const User={
+            email:this.state.email,
+            password:this.state.password
+        }
+
+        axios.post('http://localhost:5000/instructor/login', User)
+            .then(res => {
+                console.log("login")
+                localStorage.setItem('usertoken', res.data)
+                console.log( res.data)
+
+                if(res.data=="correct")
+                {
+
+                    this.props.history.push('/');
+
+                }
+                else
+                {
+
+                    alert("Incorrect username and Password");
+
+
+                }
+
+            }).catch(err => {
+            console.log(err)
+        })
+
+    }
+
     render() {
         return (
             <div>
@@ -25,7 +88,7 @@ class InstuctorLogin extends Component {
                 <div className="limiter">
                     <div className="container-login100">
                         <div className="wrap-login100">
-                            <form className="login100-form6 validate-form">
+                            <form className="login100-form6 validate-form" onSubmit={this.onSubmit}>
 					<span className="login100-form-title p-b-34">
 						Account Login
 					</span>
@@ -33,12 +96,31 @@ class InstuctorLogin extends Component {
                                 <div className="wrap-input100 rs1-wrap-input100 validate-input m-b-20"
                                      data-validate="Type user name">
                                     <input id="first-name" className="input100" type="text" name="username"
-                                           placeholder="User name"/>
+                                           placeholder="User name"
+
+
+                                           value={this.state.email}
+                                           onChange={this.updateinstructormail}
+
+
+
+
+                                    />
                                     <span className="focus-input100"></span>
                                 </div>
                                 <div className="wrap-input100 rs2-wrap-input100 validate-input m-b-20"
                                      data-validate="Type password">
-                                    <input className="input100" type="password" name="pass" placeholder="Password"/>
+                                    <input className="input100" type="password" name="pass" placeholder="Password"
+
+                                           value={this.state.password}
+                                           onChange={this.updateinstructorpassword}
+
+
+
+
+
+
+                                    />
                                     <span className="focus-input100"></span>
                                 </div>
 

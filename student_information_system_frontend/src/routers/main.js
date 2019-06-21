@@ -60,6 +60,11 @@ export default class main extends Component
 
 
 
+                                    <li className="nav-item"><a className="nav-link" href="contact.html"></a>
+                                    </li>
+
+
+
 
                                 </ul>
                             </div>
@@ -384,11 +389,14 @@ export default class main extends Component
 
                 <footer class="com">
                     <div class="cont">
+                        <div class="footerdiv"></div>
 
                         <div class="row footer-bottom d-flex justify-content-between">
-                            <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">Copyright © 2018 All rights reserved | This template is
-                                made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#">Colorlib</a></p>
+                            <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">Copyright © 2018 All rights reserved <i class="fa fa-heart-o" aria-hidden="true"></i> <a href="#"></a></p>
+                            <div className="col-lg-4 col-sm-12 footer-social">
 
+                                <p className="mail1">jananisaradha@gmail.com</p>              <p className="mail1">   072-4050478</p>
+                            </div>
                         </div>
                     </div>
                 </footer>

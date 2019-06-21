@@ -7,12 +7,17 @@ const jwt=require("jsonwebtoken")
 const bcrypt=require("bcryptjs")
 
 const User=require('../model/Student.model')
+
 student.use(cors())
 
 process.env.SECRET_KEY='secret'
 
 student.post('/register',(req, res)=>{
     const userData={
+
+        first_name:req.body.first_name,
+        last_name:req.body.last_name,
+
         name:req.body.name,
         address:req.body.address,
         state1:req.body.state1,
@@ -46,6 +51,8 @@ student.post('/register',(req, res)=>{
         })
 })
 
+
+student.post('/login',(req, res)=>{
 student.route('/').get(function (req, res) {
     User.find(function (err, instructor) {
 
@@ -68,6 +75,7 @@ student.route('/').get(function (req, res) {
 
     student.post('/login',(req, res)=>{
 
+
     User.findOne({
         email:req.body.email
     })
@@ -77,11 +85,21 @@ student.route('/').get(function (req, res) {
                     const payload={
                         _id:user._id,
 
+                        first_name:user.first_name,
+                        last_name:user.last_name,
+                        email:user.email
+
 
                     }
                     let token=jwt.sign(payload,process.env.SECRET_KEY,{
                         expiresIn:1440
                     })
+
+                    res.send(token)
+                }else{
+                    //res.json({error:"user dose not exist"})
+                    console.log("user dose not exist")
+
                     res.send("correct")
                 }else{
                     //res.json({error:"user dose not exist"})
@@ -89,12 +107,14 @@ student.route('/').get(function (req, res) {
 
                     res.send("error");
 
+
                 }
             }else{
                 //res.json({error:"user does not exist"})
                 console.log("user dose not exist")
 
                 res.send("error")
+
 
             }
         })
@@ -122,5 +142,6 @@ student.get('/profile',(req, res)=>{
     })
 
 })
+
 
 module.exports=student
