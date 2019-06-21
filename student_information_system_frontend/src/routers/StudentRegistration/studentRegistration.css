@@ -214,7 +214,7 @@ iframe {
     background-position: center;
     position: relative;
     z-index: 1;
-    background-image: url("../signup-img.jpg");
+    background-image: url("../../images/signup-img.jpg");
 }
 
 .login100-more::before {

@@ -7,7 +7,7 @@ import {BrowserRouter as Router,Route,Link} from "react-router-dom";
 
 import Home from "../InstructorRegistration/InstructorRegistration"
 
-import img1 from "../bg-01.jpg"
+import img1 from "../../images/bg-01.jpg"
 
 import AdminRegistration from "../AdminRegistration/AdminRegistration";
 import studentLogin from "../studentLogin/studentLogin";
