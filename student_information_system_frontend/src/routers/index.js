@@ -15,6 +15,8 @@ import studentRegistration from "./StudentRegistration/StudentRegistration"
 import AdminManagment from "./AdminManagment/AdminManagment"
 import HandlingInstructor from "./AdminManagment/HandlingInstructor"
 import HandlingCourse from "./AdminManagment/HandlingCourse"
+import   Addcourse from "./AdminManagment/Addcourse"
+
 export default ()=>(
     <BrowserRouter>
         <switch>
@@ -32,6 +34,8 @@ export default ()=>(
             <Route  path="/AdminLogin"   component={AdminLogin}/>
             <Route  path="/HandlingInstructor"   component={HandlingInstructor}/>
             <Route  path="/HandlingCourse"   component={HandlingCourse}/>
+
+            <Route  path="/Addcourse"   component={Addcourse}/>
 
         </switch>
 

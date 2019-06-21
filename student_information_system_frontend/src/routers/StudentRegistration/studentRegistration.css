@@ -214,7 +214,7 @@ iframe {
     background-position: center;
     position: relative;
     z-index: 1;
-    background-image: url("../signup-img.jpg");
+    background-image: url("../../images/signup-img.jpg");
 }
 
 .login100-more::before {
@@ -3509,8 +3509,37 @@ input.input100 {
     border: 1px solid #00ad5f;
 }
 
+.divfirst{
 
 
+     height:55px;
+    width:45px;
 
 
+    background-color: black;
+}
 
+
+.footerdiv{
+
+    width:231px;
+    height:70px;
+
+}
+.mail1{
+    color: #d3d9df;
+    padding-left: 250px;
+
+}
+
+.footerdiv{
+
+    width:231px;
+    height:70px;
+
+}
+.mail1{
+    color: #d3d9df;
+    padding-left: 250px;
+
+}
