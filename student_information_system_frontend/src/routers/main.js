@@ -59,8 +59,7 @@ export default class main extends Component
                                     <li className="nav-item"><a className="nav-link" href="about-us.html"><Link to="/mk">ABOUTUS</Link></a></li>
 
 
-                                    <li className="nav-item"><a className="nav-link" href="contact.html">Contact</a>
-                                    </li>
+
 
                                 </ul>
                             </div>

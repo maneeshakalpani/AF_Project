@@ -213,7 +213,7 @@ iframe {
     background-position: center;
     position: relative;
     z-index: 1;
-    background-image: url("../adminLogin.png");
+    background-image: url("../../images/adminLogin.png");
 }
 
 .login100-more::before {
@@ -3475,8 +3475,21 @@ input.input100 {
     bottom: 0px;
 }
 
+.gg{
+    height:20px;
+}
+
+.com{
 
 
+    height: 150px;
+    background:#0c5460;
+
+}
+.footerdiv{
+    width:231px;
+    height:70px;
+}
 
 
 

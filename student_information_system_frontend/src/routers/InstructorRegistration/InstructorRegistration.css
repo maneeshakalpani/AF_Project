@@ -213,7 +213,7 @@ iframe {
     background-position: center;
     position: relative;
     z-index: 1;
-    background-image: url("../admin.jpg");
+    background-image: url("../../images/admin.jpg");
 }
 
 .login100-more::before {

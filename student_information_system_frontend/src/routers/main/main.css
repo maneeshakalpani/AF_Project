@@ -397,7 +397,7 @@ button:focus {
     min-height: 780px;
     display: flex;
     position: relative;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../home-banner.jpg") no-repeat scroll center; }
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../../images/home-banner.jpg") no-repeat scroll center; }
 
 
 .home_banner_area .banner_inner {
@@ -858,7 +858,7 @@ button:focus {
 .fact_area {
     position: relative;
     color: #fff;
-    background-image: url('../features-bg1.jpg');
+    background-image: url('../../images/features-bg1.jpg');
     background-size: cover;
     z-index: 1;
     padding: 120px 0 90px; }
@@ -12680,7 +12680,7 @@ a.text-dark:hover {
 
     height: 130px;
     width:350px;
-    background-image: url("../logo.png");
+    background-image: url("../../images/logo.png");
     background-size:    343px;
 }
 .logohandling{
