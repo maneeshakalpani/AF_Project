@@ -14,8 +14,21 @@ let Instructor=new Schema({
         type:String
 
     },
+    instructormobileno:{
+      type:String
+    },
+    instrucoraddress:{
 
+        type:String
+    },
+    instructordob:{
 
+      type:String
+    },
+    instructorstate:{
+
+        type:String
+    },
     instuctorage:{
 
 
@@ -28,16 +41,25 @@ let Instructor=new Schema({
         type:String
 
     },
-    instuctoremail:{
+
+    email:{
 
 
-        type:String
+        type:String,
+        required: true
 
+    },
+    password:{
+
+      type:String,
+        required: true
+
+    
     }
 
 
-
 });
+
 
 
 module.exports=mongoose.model('Instructor',Instructor);

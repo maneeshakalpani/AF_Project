@@ -1,40 +1,64 @@
-const mongoose=require("mongoose")
-const Schema=mongoose.Schema
 
-const AdminSchema=new Schema({
+const mongoose=require('mongoose');
+const Schema=mongoose.Schema;
 
-    Adminname:{
+let Admin=new Schema({
+
+    staffid:{
+
+        type:String
+
+    },
+
+    name:{
+
+        type:String
+
+    },
+    mobileno:{
         type:String
     },
     address:{
+
         type:String
     },
+    dob:{
 
-    state1:{
-        type:String,
-        required:true
+        type:String
+    },
+    state:{
+
+        type:String
+    },
+    age:{
+
+
+        type:String
 
     },
     gender:{
-        type:String,
-        required:true
-    },
-    dob:{
-        type:String,
-        required:true
-    },
-    course:{
-        type:String,
-        required:true
+
+
+        type:String
+
     },
     email:{
+
+
         type:String,
-        required:true
+        required: true
+
     },
     password:{
-        type:String,
-        required:true
-    }
-})
 
-module.exports=mongoose.model('user',UserSchema)
+        type:String,
+        required: true
+
+    }
+
+
+});
+
+
+
+module.exports=mongoose.model('Admin',Admin);

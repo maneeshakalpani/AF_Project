@@ -12669,7 +12669,7 @@ a.text-dark:hover {
 .com{
 
 
-    height: 25px;
+    height: 150px;
     background:#0c5460;
 
 }
@@ -12697,4 +12697,15 @@ a.text-dark:hover {
 
 .st{
     padding-right: 30px;
+}
+.footerdiv{
+
+    width:231px;
+    height:70px;
+
+}
+.mail1{
+    color: #d3d9df;
+    padding-left: 250px;
+
 }

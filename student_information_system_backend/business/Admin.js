@@ -6,6 +6,8 @@ const cors=require("cors")
 const jwt=require("jsonwebtoken")
 const bcrypt=require("bcryptjs")
 
+
+
 const User=require('../model/Student.model')
 users.use(cors())
 
@@ -19,19 +21,25 @@ users.post('/register',(req,res)=>{
         gender:req.body.gender,
         dob:req.body.dob,
         course:req.body.course,
+
         email:req.body.email,
         password:req.body.password
     }
 
+
+
     User.findOne({
         email:req.body.email
     })
+
         .then(user=>{
             if(!user){
                 bcrypt.hash(req.body.password,10,(err,hash)=>{
                     userData.password=hash
+
                     User.create(userData).then(user=>{
                         res.json({status:user.email+'registerd'})
+
                     })
                         .catch(err=>{
                             res.send('error:' +err)
@@ -42,6 +50,7 @@ users.post('/register',(req,res)=>{
             }
         })
         .catch(err=>{
+
             res.send('error:' + err)
         })
 })
@@ -58,9 +67,11 @@ users.route('/').get(function (req,res) {
 
             res.json(instructor);
 
+
         }
 
     });
+
 })
 
 
@@ -69,13 +80,14 @@ users.route('/').get(function (req,res) {
 users.post('/login',(req,res)=>{
 
     User.findOne({
+
         email:req.body.email
     })
         .then(user=>{
             if(user){
                 if(bcrypt.compareSync(req.body.password,user.password)){
                     const payload={
-                        _id:user._id,
+          _id:user._id,
                         name:user.name,
                         address:user.address,
                         state1:user.state1,
@@ -94,6 +106,7 @@ users.post('/login',(req,res)=>{
                     //res.json({error:"user dose not exist"})
                     console.log("user dose not exist")
 
+
                     res.send("error");
 
                 }
@@ -102,6 +115,7 @@ users.post('/login',(req,res)=>{
                 console.log("user dose not exist")
 
                 res.send("error")
+
 
             }
         })
@@ -129,5 +143,6 @@ users.get('/profile',(req,res)=>{
     })
 
 })
+
 
 module.exports=users
