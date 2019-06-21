@@ -5,43 +5,40 @@ const users=express.Router()
 const cors=require("cors")
 const jwt=require("jsonwebtoken")
 const bcrypt=require("bcryptjs")
-const nodemailer = require("nodemailer");
-const Admin=require('../model/Admin.model')
 
+
+
+const User=require('../model/Student.model')
 users.use(cors())
 
 process.env.SECRET_KEY='secret'
-users.route('/add').post(function (req,res) {
 
-
+users.post('/register',(req,res)=>{
     const userData={
-        staffid:req.body.staffid,
         name:req.body.name,
-        mobileno:req.body.mobileno,
         address:req.body.address,
-        dob:req.body.dob,
-        state:req.body.state,
-        age:req.body.age,
+        state1:req.body.state1,
         gender:req.body.gender,
+        dob:req.body.dob,
+        course:req.body.course,
+
         email:req.body.email,
         password:req.body.password
     }
 
 
-    Admin.findOne({
+
+    User.findOne({
         email:req.body.email
     })
-
 
         .then(user=>{
             if(!user){
                 bcrypt.hash(req.body.password,10,(err,hash)=>{
                     userData.password=hash
-                    Admin.create(userData).then(user=>{
-                        res.json({status:user.staffid+'registerd'})
 
-
-
+                    User.create(userData).then(user=>{
+                        res.json({status:user.email+'registerd'})
 
                     })
                         .catch(err=>{
@@ -54,57 +51,51 @@ users.route('/add').post(function (req,res) {
         })
         .catch(err=>{
 
-            res.status(400).send('adding new todo failed');
+            res.send('error:' + err)
+        })
+})
 
-        })});
 users.route('/').get(function (req,res) {
+    User.find(function (err, instructor) {
 
-
-
-    Admin.find(function (err,admin) {
-
-        if(err)
-        {
+        if (err) {
 
             console.log(err);
 
-        }
-        else{
+        } else {
 
 
-            res.json(admin);
+            res.json(instructor);
+
 
         }
 
     });
 
+})
 
 
-});
+
 
 users.post('/login',(req,res)=>{
 
-    Admin.findOne({
+    User.findOne({
+
         email:req.body.email
     })
         .then(user=>{
             if(user){
                 if(bcrypt.compareSync(req.body.password,user.password)){
                     const payload={
-
-                        _id:user._id,
-                        staffid:user.staffid,
+          _id:user._id,
                         name:user.name,
-                        mobileno:user.mobileno,
                         address:user.address,
-                        dob:user.dob,
-                        state:user.state,
-                        age:user.age,
+                        state1:user.state1,
                         gender:user.gender,
-                        email:user.email
-
-
-
+                        dob:user.dob,
+                        course:user.course,
+                        email:user.email,
+                        password:user.password
 
                     }
                     let token=jwt.sign(payload,process.env.SECRET_KEY,{
@@ -115,61 +106,17 @@ users.post('/login',(req,res)=>{
                     //res.json({error:"user dose not exist"})
                     console.log("user dose not exist")
 
-                    res.send("error")
+
+                    res.send("error");
 
                 }
             }else{
+                //res.json({error:"user does not exist"})
+                console.log("user dose not exist")
+
                 res.send("error")
-                //res.json({error:"user does not exist"})
-                console.log("user dose not exist")
-            }
-        })
-        .catch(err=>{
-            res.send('error:'+err)
-        })
-})
 
-/*
-res.json({status:user.first_name+'registerd'})
-                    })
-                        .catch(err=>{
-                            res.send('error:' +err)
-                        })
-                })
-            }else{
-                res.json({error:'user already exsists'})
-            }
-        })
-        .catch(err=>{
-            res.send('error:' + err)
-        })
-})
 
-users.post('/login',(req,res)=>{
-
-    User.findOne({
-        email:req.body.email
-    })
-        .then(user=>{
-            if(user){
-                if(bcrypt.compareSync(req.body.password,user.password)){
-                    const payload={
-                        _id:user._id,
-                        first_name:user.first_name,
-                        last_name:user.last_name,
-                        email:user.email
-                    }
-                    let token=jwt.sign(payload,process.env.SECRET_KEY,{
-                        expiresIn:1440
-                    })
-                    res.send(token)
-                }else{
-                    //res.json({error:"user dose not exist"})
-                    console.log("user dose not exist")
-                }
-            }else{
-                //res.json({error:"user does not exist"})
-                console.log("user dose not exist")
             }
         })
         .catch(err=>{
@@ -196,5 +143,6 @@ users.get('/profile',(req,res)=>{
     })
 
 })
-*/
+
+
 module.exports=users

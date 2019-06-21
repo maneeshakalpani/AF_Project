@@ -14,6 +14,7 @@ import "./AdminLogin.css"
 import AdminRegistration from "../AdminRegistration/AdminRegistration";
 import studentLogin from "../studentLogin/studentLogin";
 import AdminManagment from "../AdminManagment/AdminManagment"
+import axios from "axios";
 export default class AdminLogin extends Component
 {
     constructor(props)
@@ -77,7 +78,63 @@ export default class AdminLogin extends Component
 
     }
 
+    constructor() {
+        super()
+        this.state = {
+            email: "",
+            password: "",
+        }
 
+        this.onChangeemail=this.onChangeemail.bind(this)
+        this.onChangepassword=this.onChangepassword.bind(this)
+
+        this.onSubmit=this.onSubmit.bind(this)
+    }
+
+    onChangeemail(e){
+        this.setState({email:e.target.value})
+    }
+
+    onChangepassword(e){
+        this.setState({password:e.target.value})
+    }
+
+    onSubmit(e) {
+        e.preventDefault()
+
+        const User = {
+            email: this.state.email,
+            password: this.state.password
+        }
+
+        axios.post('http://localhost:5000/users/login', User)
+            .then(res => {
+                console.log("login")
+                localStorage.setItem('usertoken', res.data)
+                console.log(res.data)
+                if(res.data=="correct")
+
+                {
+                    this.props.history.push('/');
+
+
+                }
+
+                else {
+                    alert("me");
+
+                }
+
+            }).catch(err => {
+            this.setState({
+                email:'',
+                password:''
+            })
+            console.log(err)
+
+        })
+
+    }
 
     render() {
         return (
@@ -85,9 +142,13 @@ export default class AdminLogin extends Component
             <div>
                 <div className="header-top">
                     <div className="logo">
+
                         <div className="logohandling">
 
                         </div>
+
+
+
 
 
                     </div>
@@ -111,6 +172,7 @@ export default class AdminLogin extends Component
                                 <div className="wrap-input100 rs1-wrap-input100 validate-input m-b-20"
                                      data-validate="Type user name">
                                     <input id="first-name" className="input100" type="text" name="username"
+
                                            placeholder="User name"
 
 
@@ -121,11 +183,16 @@ export default class AdminLogin extends Component
 
 
                                     />
+
+                                           placeholder="User name" value={this.state.email}
+                                           onChange={this.onChangeemail}/>
+
                                         <span className="focus-input100"></span>
                                 </div>
                                 <div className="wrap-input100 rs2-wrap-input100 validate-input m-b-20"
                                      data-validate="Type password">
                                     <input className="input100" type="password" name="pass" placeholder="Password"
+
 
                                            value={this.state.password}
                                            onChange={this.updatepassword}
@@ -134,6 +201,10 @@ export default class AdminLogin extends Component
 
 
                                     />
+
+                                           value={this.state.password}
+                                           onChange={this.onChangepassword}/>
+
                                         <span className="focus-input100"></span>
                                 </div>
 
@@ -166,11 +237,25 @@ export default class AdminLogin extends Component
                         </div>
                     </div>
                 </div>
+                <footer className="com">
+                    <div className="cont" >
+                        <div class="footerdiv"></div>
+                        <div className="row footer-bottom d-flex justify-content-between">
+                            <p className="col-lg-8 col-sm-12 footer-text m-0 text-white">Copyright © 2018 All rights
+                                reserved | This template is
+                                made with <i className="fa fa-heart-o" aria-hidden="true"></i> by <a
+                                    href="#">Colorlib</a></p>
+
 
                 <footer className="com">
                     <div className="cont">
 
                         <div className="footerdiv"></div>
+
+                        </div>
+                    </div>
+                </footer>
+
 
                         <div className="row footer-bottom d-flex justify-content-between">
                             <p className="col-lg-8 col-sm-12 footer-text m-0 text-white">Copyright © 2018 All rights

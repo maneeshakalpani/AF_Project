@@ -41,6 +41,7 @@ let Instructor=new Schema({
         type:String
 
     },
+
     email:{
 
 
@@ -53,6 +54,7 @@ let Instructor=new Schema({
       type:String,
         required: true
 
+    
     }
 
 

@@ -3,18 +3,41 @@ const Schema=mongoose.Schema
 
 const UserSchema=new Schema({
 
-    first_name:{
+
+  
+   
+
+    name:{
         type:String
     },
-    last_name:{
+    address:{
         type:String
     },
 
-    email:{
+    state1:{
+
         type:String,
         required:true
 
     },
+
+    gender:{
+        type:String,
+        required:true
+    },
+    dob:{
+        type:String,
+        required:true
+    },
+    course:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true
+    },
+
     password:{
         type:String,
         required:true

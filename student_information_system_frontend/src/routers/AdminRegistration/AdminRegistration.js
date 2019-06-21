@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import "./AdminRegistration.css"
+
 import axios from 'axios';
 import {BrowserRouter as Router,Route,Link} from "react-router-dom";
 
@@ -123,6 +124,94 @@ class AdminRegistration extends Component {
         })
         //this.props.history.push('/')
 
+
+import axios from "axios";
+
+
+class AdminRegistration extends Component {
+
+    constructor(){
+        super()
+        this.state={
+            name:"",
+            address:"",
+            state1:"",
+            gender:"",
+            dob:"",
+            course:"",
+            email:"",
+            password:""
+        }
+        this.onChangename=this.onChangename.bind(this)
+        this.onChangeaddress=this.onChangeaddress.bind(this)
+        this.onChangestate1=this.onChangestate1.bind(this)
+        this.onChangegender=this.onChangegender.bind(this)
+        this.onChangedob=this.onChangedob.bind(this)
+        this.onChangecourse=this.onChangecourse.bind(this)
+        this.onChangeemail=this.onChangeemail.bind(this)
+        this.onChangepassword=this.onChangepassword.bind(this)
+
+        this.onSubmit=this.onSubmit.bind(this)
+    }
+
+    onChangename(e){
+        this.setState({name:e.target.value})
+    }
+
+    onChangeaddress(e){
+        this.setState({address:e.target.value})
+    }
+
+    onChangestate1(e){
+        this.setState({state1:e.target.value})
+    }
+
+    onChangegender(e){
+        this.setState({gender:e.target.value})
+    }
+
+    onChangedob(e){
+        this.setState({dob:e.target.value})
+    }
+
+    onChangecourse(e){
+        this.setState({course:e.target.value})
+    }
+
+    onChangeemail(e){
+        this.setState({email:e.target.value})
+    }
+
+    onChangepassword(e){
+        this.setState({password:e.target.value})
+    }
+
+    onSubmit(e){
+        e.preventDefault()
+
+        const User={
+            name:this.state.name,
+            address:this.state.address,
+            state1:this.state.state1,
+            gender:this.state.gender,
+            dob:this.state.dob,
+            course:this.state.course,
+            email:this.state.email,
+            password:this.state.password
+        }
+        axios.post('http://localhost:5000/admin/register',User).then(res=>{
+            console.log(res.data)
+            this.props.history.push('/Admin')
+        })
+
+
+
+        /*  register(User).then(res=>{
+
+
+
+          })*/
+
     }
     render() {
         return (
@@ -154,6 +243,7 @@ class AdminRegistration extends Component {
 
                                 <div className="wrap-input100 ">
                                     <input id="first-name" className="input100" type="text"
+
                                            placeholder="Staff Id"
 
 
@@ -162,6 +252,10 @@ class AdminRegistration extends Component {
 
 
                                     />
+
+                                           placeholder="Staff Id" value={this.state.name}
+                                           onChange={this.onChangename} required/>
+
                                     <span className="focus-input100"></span>
                                 </div>
 

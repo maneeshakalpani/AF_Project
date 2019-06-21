@@ -70,6 +70,21 @@ class InstuctorLogin extends Component {
     render() {
         return (
             <div>
+                <div className="header-top">
+                    <div className="logo">
+
+
+
+                    </div>
+                    <div className="container">
+                        <div className="row align-items-center">
+                            <div className="col-lg-6 col-sm-6 col-4 header-top-left">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
                 <div className="limiter">
                     <div className="container-login100">
                         <div className="wrap-login100">
@@ -138,6 +153,18 @@ class InstuctorLogin extends Component {
                         </div>
                     </div>
                 </div>
+                <footer className="com">
+                    <div className="cont">
+                        <div className="footerdiv"></div>
+                        <div className="row footer-bottom d-flex justify-content-between">
+                            <p className="col-lg-8 col-sm-12 footer-text m-0 text-white">Copyright © 2018 All rights
+                                reserved | This template is
+                                made with <i className="fa fa-heart-o" aria-hidden="true"></i> by <a
+                                    href="#">Colorlib</a></p>
+
+                        </div>
+                    </div>
+                </footer>
             </div>
         )
     }
